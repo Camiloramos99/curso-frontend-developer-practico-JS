@@ -54,7 +54,11 @@
   .navbar-right ul li a:hover {
     border: 1px solid var(--hospital-green);
     color: var(--hospital-green);
-  }
+  } 
+  .navbar-left ul li a.selected {
+    border: 1px solid var(--hospital-green);
+    color: var(--hospital-green);
+   }
   .navbar-email {
     color: var(--very-light-pink);
     cursor: pointer;

@@ -7,7 +7,7 @@ const shoppingCartIcon = document.querySelector(".navbar-shopping-cart");
 const productDetail = document.querySelector(".product-detail");
 const cardsContainer = document.querySelector(".cards-container");
 const productDetailSecondary = document.querySelector(".product-detail-secondary");
-
+const categorias = document.querySelectorAll(".boton-categoria")
 
 
 function toggleDesktopMenu() {
@@ -64,27 +64,116 @@ function closeProductDetailSecondary() {
     productDetailSecondary.classList.add("inactive");
     
 }
+
+
 menuEmail.addEventListener("click", toggleDesktopMenu);
 menuMobileIcon.addEventListener("click", toggleMobileMenu);
 shoppingCartIcon.addEventListener("click", toggleProductDetail);
 productDetailCloseIcon.addEventListener("click", closeProductDetailSecondary);
+
+
+categorias.forEach((categoria) =>  {
+    categoria.addEventListener("click", ()  =>  {       //agrega el escuchador de evento click a cada categoria
+
+        categorias.forEach((cat) => 
+            cat.classList.remove("selected"));          //remueve la clase de cada categoria
+            categoria.classList.add("selected");        //agrega la clase a la categoria clickeada
+    });
+});
+
+
 
 const productList = [];
 
 productList.push({
     price: 120,
     name: "Bike",
-    img:"https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    categoria: {
+        nombre: "others",
+        id: "others"
+    },
+    img:"https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
 });
 productList.push({
-    price: 200,
-    name: "tv",
-    img:"https://images.pexels.com/photos/17233395/pexels-photo-17233395/free-photo-of-flores-vintage-retro-television.jpeg?auto=compress&cs=tinysrgb&w=600",
+    price: 199,
+    name: "Desk Lamp",
+    categoria: {
+        nombre: "furiture",
+        id:"furiture"
+    },
+    img:"https://images.pexels.com/photos/18280834/pexels-photo-18280834/free-photo-of-cama-lampara-decorativo-mesita-de-noche.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 });
 productList.push({
-    price: 1300,
-    name: "pc",
-    img:"https://images.pexels.com/photos/38568/apple-imac-ipad-workplace-38568.jpeg?auto=compress&cs=tinysrgb&w=600",
+    price: 390,
+    name: "Couch",
+    categoria: {
+        nombre: "furiture",
+        id: "furiture"
+    },
+    img:"https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+});
+productList.push({
+    price: 99,
+    name: "Hanging Mirror",
+    categoria: {
+        nombre: "furiture",
+        id: "furiture"
+    },
+    img:"https://images.pexels.com/photos/1528975/pexels-photo-1528975.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+});
+productList.push({
+    price: 59,
+    name: "Blue Bag",
+    categoria: {
+        nombre: "others",
+        id: "others"
+    },
+    img:"https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+});
+productList.push({
+    price: 129,
+    name: "Pinting",
+    categoria: {
+        nombre: "furiture",
+        id: "furiture"
+    },
+    img:"https://images.pexels.com/photos/18254580/pexels-photo-18254580/free-photo-of-casas-pared-pintura-casa.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+});
+productList.push({
+    price: 69,
+    name: "Gardening Kit",
+    categoria: {
+        nombre: "Gardening",
+        id: "Gardening"
+    },
+    img:"https://images.pexels.com/photos/6231726/pexels-photo-6231726.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+});
+productList.push({
+    price: 1589,
+    name: "Lawnmower",
+    categoria: {
+        nombre: "Gardening",
+        id: "Gardening"
+    },
+    img:"https://images.pexels.com/photos/9229821/pexels-photo-9229821.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+});
+productList.push({
+    price: 29,
+    name: "Sweater",
+    categoria: {
+        nombre: "clothes",
+        id: "clothes"
+    },
+    img:"https://images.pexels.com/photos/45982/pexels-photo-45982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+});
+productList.push({
+    price: 45,
+    name: "wooden train",
+    categoria: {
+        nombre: "toys",
+        id: "toys"
+    },
+    img:"https://images.pexels.com/photos/273062/pexels-photo-273062.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 });
 
 function renderProducts(arr){
