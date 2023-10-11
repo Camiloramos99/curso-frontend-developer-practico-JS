@@ -73,12 +73,24 @@ productDetailCloseIcon.addEventListener("click", closeProductDetailSecondary);
 
 
 categorias.forEach((categoria) =>  {
-    categoria.addEventListener("click", ()  =>  {       //agrega el escuchador de evento click a cada categoria
+    categoria.addEventListener("click", (e)  =>  {       //agrega el escuchador de evento click a cada categoria
 
         categorias.forEach((cat) => 
+
             cat.classList.remove("selected"));          //remueve la clase de cada categoria
             categoria.classList.add("selected");        //agrega la clase a la categoria clickeada
-    });
+
+
+
+            if(e.currentTarget.id != "all") {
+                const productFiltered = productList.filter(producto => producto.categoria.id === e.currentTarget.id);   //agrega los productos filtrados 
+                renderProducts(productFiltered);  
+            } else {
+                renderProducts(productList);
+            }
+    
+    })
+    
 });
 
 
@@ -177,6 +189,9 @@ productList.push({
 });
 
 function renderProducts(arr){
+
+    cardsContainer.innerHTML = '';
+
     for (product of arr){
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
